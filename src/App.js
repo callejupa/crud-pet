@@ -2,6 +2,7 @@ import { size } from 'lodash'
 import React, { useState, useEffect } from 'react'
 import { Container, Row, Form, Button, Col } from 'react-bootstrap';
 import ModalPet from './components/ModalPet'
+import { addDocument } from './utils/actions';
 
 const App = () => {
   const [ pets, setPets ] = useState([])
@@ -16,11 +17,31 @@ const App = () => {
     ownerAddress: "",
     ownerEmail: ""
   })
+  const [ error, setError ] = useState(null)
 
-  const handleSubmit = (e) => {
+  const handleAddPet = async (e) => {
     e.preventDefault()
 
+    const result = await addDocument("pets", pet)
+
+    if(result.statusResponse) {
+      setError(result.error)
+      return
+    }
     console.log(pet)
+    setPets([ ...pets, { ...pet, id: result.data.id, }])
+    setPet({
+      id: "",
+      name: "",
+      type: "",
+      breed: "",
+      birthDate: "",
+      ownerName: "",
+      ownerPhone: "",
+      ownerAddress: "",
+      ownerEmail: ""
+    })
+    
   }
 
   return (
@@ -31,7 +52,8 @@ const App = () => {
       {/* <ModalPet 
         title="Add a new Pet"
       /> */}
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleAddPet}>
+      { error && <span className="text-danger">{error}</span>}
         <Row className="justify-content-md-center mt-5">
           <h3>Pet Information</h3>
         </Row>
