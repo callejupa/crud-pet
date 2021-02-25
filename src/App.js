@@ -2,12 +2,11 @@ import { size } from 'lodash'
 import React, { useState, useEffect } from 'react'
 import { Container, Row, Form, Button, Col } from 'react-bootstrap';
 import ModalPet from './components/ModalPet'
-import { addDocument } from './utils/actions';
+import { getCollection, addDocument } from './utils/actions';
 
 const App = () => {
   const [ pets, setPets ] = useState([])
   const [ pet, setPet ] = useState({
-    id: "",
     name: "",
     type: "",
     breed: "",
@@ -18,6 +17,15 @@ const App = () => {
     ownerEmail: ""
   })
   const [ error, setError ] = useState(null)
+
+  useEffect(() => {
+    (async () => {
+      const result = await getCollection("pets")
+      if (result.statusResponse) {
+        setPets(result.data)
+      }
+    })()
+  }, [])
 
   const handleAddPet = async (e) => {
     e.preventDefault()
