@@ -32,11 +32,10 @@ const App = () => {
 
     const result = await addDocument("pets", pet)
 
-    if(result.statusResponse) {
+    if(!result.statusResponse) {
       setError(result.error)
       return
     }
-    console.log(pet)
     setPets([ ...pets, { ...pet, id: result.data.id, }])
     setPet({
       id: "",
@@ -49,7 +48,6 @@ const App = () => {
       ownerAddress: "",
       ownerEmail: ""
     })
-    
   }
 
   return (
@@ -158,7 +156,7 @@ const App = () => {
           <Button type="submit">Save changes</Button>
         </Row> 
         </Form>
-      {/* <div>
+      <div>
         {size(pets) === 0 ? (
               <li className="list-group-item text-center">without pets... Add your first Pet</li>
             ) : (
@@ -193,7 +191,7 @@ const App = () => {
               </tbody>
             </table>
         )}
-      </div> */}
+      </div>
     </Container>
   );
 }
