@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import { Modal, Button } from 'react-bootstrap'
+import FormPet from './FormPet'
 
 const ModalPet = ({
   title
@@ -18,15 +19,17 @@ const ModalPet = ({
         <Modal.Header closeButton>
           <Modal.Title>{title}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Form</Modal.Body>
-        <Modal.Footer>
+        <Modal.Body>
+          <FormPet />
+        </Modal.Body>
+        {/* <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Cancel
           </Button>
           <Button variant="primary" onClick={handleClose}>
             Save Changes
           </Button>
-        </Modal.Footer>
+        </Modal.Footer> */}
       </Modal>
       </div>
     )

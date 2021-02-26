@@ -6,17 +6,6 @@ export const PetContext = createContext()
 export const PetProvider = props => {
   const [pets, setPets] = useState([])
 
-  // const [pets, setPets] = useState({
-  //   name: "",
-  //   type: "",
-  //   breed: "",
-  //   birthDate: "",
-  //   ownerName: "",
-  //   ownerPhone: "",
-  //   ownerAddress: "",
-  //   ownerEmail: ""
-  // })
-
   useEffect(() => {
     (async () => {
       const result = await getCollection("pets")

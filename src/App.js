@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Row } from 'react-bootstrap'
-//import ModalPet from './components/ModalPet'
+import ModalPet from './components/ModalPet'
 import { PetProvider } from './components/context/PetContext'
 //components
 import PetList from './components/PetList'
@@ -13,11 +13,12 @@ const App = () => {
       <Row className="justify-content-md-center mt-5">
         <h1>Your Pets Here!!!</h1>
       </Row>
-      {/* <ModalPet 
-        title="Add a new Pet"
-      /> */}
-      {/* <FormPet /> */}
+      <Row className="justify-content-md-center mt-5">
+        <ModalPet />
+      </Row>
+      <Row className="mt-5">
         <PetList />
+      </Row>
     </Container>
     </PetProvider>
   );
