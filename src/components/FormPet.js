@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Row, Form, Button, Col } from 'react-bootstrap'
 import { addDocument, updateDocument } from '../utils/actions'
 import { PetContext } from './context/PetContext'

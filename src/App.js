@@ -16,7 +16,7 @@ const App = () => {
       <Row className="justify-content-md-center mt-5">
         <ModalPet 
         title="Add A New Pet"
-        textButton="Add New Pet" 
+        textButton="Add A New Pet" 
         variantButton="dark"
         />
       </Row>

@@ -18,7 +18,6 @@ const ModalPet = ({
       <Button variant={variantButton} onClick={handleShow}>
         {textButton}
       </Button>
-
       <Modal size="lg" show={show} onHide={handleClose}>
         <Modal.Header closeButton>
             <Modal.Title centered>{title}</Modal.Title>

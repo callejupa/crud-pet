@@ -2,13 +2,15 @@ import { size } from 'lodash'
 import React, { useContext } from 'react'
 import { PetContext } from './context/PetContext'
 import { Button } from 'react-bootstrap'
+//components
 import ModalPet from './ModalPet'
+import DeleteModal from './DeleteModal'
 
  const PetList = () => {
   const [pets] = useContext(PetContext)
 
   if(size(pets) === 0) {
-    return (<li className="list-group-item text-center">Without pets... Add your first Pet</li>)
+    return (<li className="list-group-item text-center">Loading...</li>)
   }
 
   return (
@@ -46,7 +48,12 @@ import ModalPet from './ModalPet'
                     dataPet={pet} />
                   </td>
                   <td>
-                    <Button variant="danger">Delete</Button>
+                    <DeleteModal 
+                      title="Delete a Pet"
+                      variantButton="danger"
+                      textButton="Delete"
+                      dataPet={pet}
+                    />
                   </td>
                 </tr>
               ))}
