@@ -2,6 +2,7 @@ import { size } from 'lodash'
 import React, { useContext } from 'react'
 import { PetContext } from './context/PetContext'
 import { Button } from 'react-bootstrap'
+import ModalPet from './ModalPet'
 
  const PetList = () => {
   const [pets] = useContext(PetContext)
@@ -27,7 +28,7 @@ import { Button } from 'react-bootstrap'
           </thead>
               <tbody>
               {pets.map((pet) => (
-                <tr>
+                <tr key={pet.id}>
                   <td>{pet.name}</td>
                   <td>{pet.type}</td>
                   <td>{pet.breed}</td>
@@ -37,7 +38,12 @@ import { Button } from 'react-bootstrap'
                   <td>{pet.ownerAddress}</td>
                   <td>{pet.ownerEmail}</td>
                   <td>
-                    <Button variant="info">Edit</Button>
+                    <ModalPet 
+                    title="Edit Pet"
+                    textButton="Edit"
+                    variantButton="info"
+                    editMode 
+                    dataPet={pet} />
                   </td>
                   <td>
                     <Button variant="danger">Delete</Button>

@@ -1,20 +1,23 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Row, Form, Button, Col } from 'react-bootstrap'
-import { addDocument } from '../utils/actions'
+import { addDocument, updateDocument } from '../utils/actions'
 import { PetContext } from './context/PetContext'
 
-const FormPet = () => {
+const FormPet = ({
+  isEdit = false,
+  dataPetEdit
+}) => {
   const [ pets, setPets] = useContext(PetContext)
   const [ error, setError ] = useState(null)
   const [ pet, setPet ] = useState({
-    name: "",
-    type: "",
-    breed: "",
-    birthDate: "",
-    ownerName: "",
-    ownerPhone: "",
-    ownerAddress: "",
-    ownerEmail: ""
+    name: isEdit ? dataPetEdit.name : "",
+    type: isEdit ? dataPetEdit.type : "",
+    breed: isEdit ? dataPetEdit.breed : "",
+    birthDate: isEdit ? dataPetEdit.birthDate : "",
+    ownerName: isEdit ? dataPetEdit.ownerName : "",
+    ownerPhone: isEdit ? dataPetEdit.ownerPhone : "",
+    ownerAddress: isEdit ? dataPetEdit.ownerAddress : "",
+    ownerEmail: isEdit ? dataPetEdit.ownerEmail : ""
   })
 
   const handleAddPet = async (e) => {
@@ -39,8 +42,32 @@ const FormPet = () => {
       ownerEmail: ""
     })
   }
+
+  const handleSavePet = async(e) => {
+    e.preventDefault()
+
+    const result = await updateDocument("pets", dataPetEdit.id, pet)
+    if (!result.statusResponse) {
+      setError(result.error)
+      return
+    }
+
+    const editedPets = pets.map(item => item.id === dataPetEdit.id ? { id: dataPetEdit.id, ...pet} : item)
+    setPets(editedPets)
+    setPet({
+      id: "",
+      name: "",
+      type: "",
+      breed: "",
+      birthDate: "",
+      ownerName: "",
+      ownerPhone: "",
+      ownerAddress: "",
+      ownerEmail: ""
+    })
+  }
     return (
-      <Form onSubmit={handleAddPet}>
+      <Form onSubmit={!isEdit ? handleAddPet : handleSavePet}>
       { error && <span className="text-danger">{error}</span>}
         <Row className="justify-content-md-center mt-5">
           <h3>Pet Information</h3>
@@ -135,7 +162,9 @@ const FormPet = () => {
           </Col>
         </Row>
         <Row className="justify-content-md-center mt-5">
-          <Button type="submit">Save changes</Button>
+          <Button type="submit">
+            {isEdit ? "Save" : "Add"}
+          </Button>
         </Row> 
         </Form>
     )

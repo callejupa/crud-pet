@@ -14,7 +14,11 @@ const App = () => {
         <h1>Your Pets Here!!!</h1>
       </Row>
       <Row className="justify-content-md-center mt-5">
-        <ModalPet />
+        <ModalPet 
+        title="Add A New Pet"
+        textButton="Add New Pet" 
+        variantButton="dark"
+        />
       </Row>
       <Row className="mt-5">
         <PetList />
