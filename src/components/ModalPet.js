@@ -26,6 +26,7 @@ const ModalPet = ({
           <FormPet 
           isEdit={editMode}
           dataPetEdit={dataPet}
+          hideModal={handleClose}
           />
         </Modal.Body>
         <Modal.Footer>

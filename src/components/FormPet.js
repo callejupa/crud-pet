@@ -5,7 +5,8 @@ import { PetContext } from './context/PetContext'
 
 const FormPet = ({
   isEdit = false,
-  dataPetEdit
+  dataPetEdit,
+  hideModal,
 }) => {
   const [ pets, setPets] = useContext(PetContext)
   const [ error, setError ] = useState(null)
@@ -41,6 +42,7 @@ const FormPet = ({
       ownerAddress: "",
       ownerEmail: ""
     })
+    hideModal()
   }
 
   const handleSavePet = async(e) => {
@@ -65,9 +67,12 @@ const FormPet = ({
       ownerAddress: "",
       ownerEmail: ""
     })
+    hideModal()
   }
     return (
-      <Form onSubmit={!isEdit ? handleAddPet : handleSavePet}>
+      <Form 
+       onSubmit={!isEdit ? handleAddPet : handleSavePet}
+      >
       { error && <span className="text-danger">{error}</span>}
         <Row className="justify-content-md-center mt-5">
           <h3>Pet Information</h3>

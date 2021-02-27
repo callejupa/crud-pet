@@ -33,7 +33,12 @@ const DeleteModal = ({
         {textButton}
       </Button>
 
-      <Modal size="lg" show={show} onHide={handleClose}>
+      <Modal 
+        size="lg"
+        show={show}
+        onHide={handleClose}
+        centered
+      >
         <Modal.Header closeButton>
             <Modal.Title centered>{title}</Modal.Title>
         </Modal.Header>
