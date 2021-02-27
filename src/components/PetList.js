@@ -1,7 +1,6 @@
 import { size } from 'lodash'
 import React, { useContext } from 'react'
 import { PetContext } from './context/PetContext'
-import { Button } from 'react-bootstrap'
 //components
 import ModalPet from './ModalPet'
 import DeleteModal from './DeleteModal'

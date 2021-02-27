@@ -29,7 +29,7 @@ const FormPet = ({
       setError(result.error)
       return
     }
-    setPets([ ...pets, { ...pet, id: result.data.id, }])
+    setPets([ ...pets, { ...pet, id: result.data.id }])
     setPet({
       id: "",
       name: "",

@@ -1,10 +1,9 @@
 import React from 'react'
 import { Container, Row } from 'react-bootstrap'
-import ModalPet from './components/ModalPet'
 import { PetProvider } from './components/context/PetContext'
 //components
+import ModalPet from './components/ModalPet'
 import PetList from './components/PetList'
-import FormPet from './components/FormPet'
 
 const App = () => {
   return (
