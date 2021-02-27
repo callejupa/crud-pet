@@ -34,7 +34,6 @@ const DeleteModal = ({
       </Button>
 
       <Modal 
-        size="lg"
         show={show}
         onHide={handleClose}
         centered
