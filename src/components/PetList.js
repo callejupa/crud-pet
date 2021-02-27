@@ -25,7 +25,7 @@ import DeleteModal from './DeleteModal'
               <th scope="col">Type</th>
               <th scope="col">Breed</th>
               <th scope="col">Date of Birth</th>
-              <th scope="col">Owner Name</th>
+              <th scope="col">Owner Full Name</th>
               <th scope="col">Phone</th>
               <th scope="col">Address</th>
               <th scope="col">Email</th>

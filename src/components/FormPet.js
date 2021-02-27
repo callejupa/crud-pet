@@ -126,7 +126,7 @@ const FormPet = ({
         <Row className="mt-3">
           <Col>
             <Form.Group controlId="formBasicEmail">
-              <Form.Label>Owner Name</Form.Label>
+              <Form.Label>Owner Full Name</Form.Label>
               <Form.Control 
               placeholder="Enter the name of the owner"
               value={pet.ownerName}
